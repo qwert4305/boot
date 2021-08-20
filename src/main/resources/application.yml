@@ -1,0 +1,36 @@
+#DEFAULT
+server:
+  port: 8000
+  tomcat:
+    uri-encoding: UTF-8
+  servlet:
+    encoding:
+      charset: UTF-8
+spring:
+  profiles:
+    active: local
+  mvc:
+    view:
+      prefix: /WEB-INF/views/
+      suffix: .jsp
+    static-path-pattern: /resources/**
+  servlet:
+    multipart:
+      max-file-size: 200MB
+      max-request-size: 200MB
+      
+mybatis:
+  type-aliases-package: com.example.boot.domain
+  mapper-locations: mybatis/mapper/**/*.xml
+  
+---
+#LOCAL
+spring:
+  profiles: local
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/testDB?serverTimezone=Asia/Seoul
+    username: root
+    password: test12345
+config: 
+  upload-file-path: C:/home/boot/upload/
